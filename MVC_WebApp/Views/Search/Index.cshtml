@@ -1,0 +1,96 @@
+﻿@model MVC_WebApp.Models.SearchDto
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Search Profile</h2>
+
+<table class="table">
+    <tr>
+        <th>
+
+            @using (Html.BeginForm("Create", "Search"))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Search</h4>
+                    <hr />
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.searchFilter.GenderID, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("GenderID", (IEnumerable<SelectListItem>)ViewBag.GenderDrp
+                           , new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.searchFilter.GenderID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.searchFilter.ReligionId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ReligionId", (IEnumerable<SelectListItem>)ViewBag.ReligionDrp
+                           , new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.searchFilter.ReligionId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.searchFilter.EatingId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("EatingId", (IEnumerable<SelectListItem>)ViewBag.eating
+                         , new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.searchFilter.EatingId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Search" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model.profiles)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiddleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GenderText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReligionText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimaryMobileNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailID)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+        }
+
+    </table>

@@ -1,0 +1,124 @@
+﻿@{ 
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: black;
+        }
+
+        .background {
+            background: url("/Content/Image/background.JPG") no-repeat;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+        }
+
+        .text, .box {
+            margin-top: 8%;
+            font-weight: 300px;
+        }
+
+        .text {
+            margin-left: 50%;
+        }
+
+        .box {
+            margin-left: 2%;
+        }
+
+        .text h1 {
+            font-size: 70px;
+            color: black;
+            font-weight: 500;
+        }
+
+        .text p {
+            font-size: 20px;
+            color: black;
+            font-weight: 300;
+        }
+
+            .text p a {
+                color: black;
+                font-weight: 700;
+            }
+
+        .form {
+            background: transparent;
+            color: black;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            width: 250px;
+        }
+
+        input {
+            margin: 20px 0;
+            padding: 10px;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: black;
+            font-family: 'Raleway', sans-serif;
+            font-size: medium;
+        }
+
+        .username, .password {
+            border-bottom: 1px solid black;
+        }
+
+        .button {
+            background: transparent;
+            border: 1px solid black;
+            color: black;
+            font-size: 18px;
+        }
+
+            .button:hover {
+                background: wheat;
+            }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="background">
+            <div class="text">
+                <h1>Login</h1>
+                <!-- <p>(Your password is your date of birth<br>ddmmyyyy)</p> -->
+            </div>
+            <div class="box">
+                @using (Html.BeginForm("Create", "Login"))
+                {
+                    <input type="text" name="empid" class="" placeholder="Employee ID ( 6 digit )">
+                    <br />
+                    <input type="password" name="pass" class="" placeholder="Password ( DDMMYYYY )">
+                    <br />
+                    <input type="submit" value="Submit" class="button">
+                }
+            </div>
+               
+        </div>
+    </main>
+</body>
+</html>
